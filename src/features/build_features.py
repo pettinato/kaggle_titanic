@@ -4,26 +4,45 @@ import numpy as np
 from sklearn.preprocessing import MinMaxScaler
 
 
+def read_raw_data(filename):
+    """
+    Read in the raw dataframe and drop columns,
+        PassengerId
+        Name
+        Age
+        SibSp
+        Parch
+        Ticket
+    Expects a csv file with a header.
+    :param filename: A filename to read data from.
+    :return: DataFrame
+    """
+    drop_cols = ['PassengerId', 'Name', 'Age', 'SibSp', 'Parch', 'Ticket']
+    df = pd.read_csv(filename)
+    return df.drop(labels=drop_cols, axis=1)
+
+
 def build_features(raw_df):
     """
     From Training Set build features,
-      Pclass is transformed to an integer
-      SibSp is transformed to an integer
-      Fare is transformed to an integer
-      Sex is transformed to 1/0 with 1 as male
-      Age is normalized and nans are filled with the mean Age
-      Parch is dummified
-      Cabin is transformed into multiple columns as below.
-      Embarked is dummified
-      Survived is unchanged
+        1. Survived (dependent variable)
+        2. Pclass - dummify
+        3. Sex - 1 if male, 0 if female
+        4. Fare - Normalized - Will need to store the mean/stdev
+           to a file in order to normalize the test set.
+        5. Cabin - as 5 columns.  1 if nan, 1 each for if contains B, C, D, E
+        6. Embarked - dummify without nan dummy column
     :param df: Data Frame with the above columns
-    :return: New DataFrame with features as above
+    :return: New DataFrame with features as above.
+    All columns returned will be numeric data types.
     """
+    # TODO
+
     features_df = pd.DataFrame.copy(raw_df)
 
-    features_df.Pclass = normalize(features_df.Pclass)
-    features_df.SibSp = normalize(features_df.SibSp)
-    features_df.Fare = normalize(features_df.Fare)
+    #features_df.Pclass = normalize(features_df.Pclass)
+    #features_df.SibSp = normalize(features_df.SibSp)
+    #features_df.Fare = normalize(features_df.Fare)
 
     # # Transform Cabin
     # for cabin_letter in ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'T']:
