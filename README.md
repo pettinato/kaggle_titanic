@@ -11,7 +11,14 @@ Analysis Steps
    * Used to do initial analysis on the raw data
 2. scripts/make_featureset.py 
    * Used to build the featureset from the raw data
-3. TODO
+3. notebooks/feature_analysis.ipynb
+   * Used to investigate features
+4. notebooks/model_exploration.ipynb
+   * Used to explore, compare and select a final model.
+5. scripts/train_model.py
+   * Run this script to output the selected model to directory `models`
+6. scripts/evaluate_test_set.py
+   * Used to evaluate the test set with the selected model
 
 Project Organization
 ------------
