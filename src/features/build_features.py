@@ -20,6 +20,23 @@ def read_raw_data(filename):
     return df.drop(labels=drop_cols, axis=1)
 
 
+def read_raw_test_data(filename):
+    """
+    Read in the raw dataframe and drop columns,
+        Name
+        Age
+        SibSp
+        Parch
+        Ticket
+    Expects a csv file with a header.
+    :param filename: A filename to read data from.
+    :return: DataFrame
+    """
+    drop_cols = ['Name', 'Age', 'SibSp', 'Parch', 'Ticket']
+    df = pd.read_csv(filename)
+    return df.drop(labels=drop_cols, axis=1)
+
+
 def build_features(raw_df):
     """
     From Training Set build features,
@@ -29,7 +46,7 @@ def build_features(raw_df):
         4. Fare - not transformed
         5. Cabin - as 5 columns.  1 if nan, 1 each for if contains B, C, D, E
         6. Embarked - dummify without nan dummy column
-    :param df: Data Frame with the above columns
+    :param raw_df: Data Frame with the above columns
     :return: New DataFrame with features as above and all other columns dropped
     All columns returned will be numeric data types.
     """
