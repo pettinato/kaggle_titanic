@@ -19,6 +19,8 @@ Analysis Steps
    * Run this script to output the selected model to directory `models`
 6. scripts/evaluate_test_set.py
    * Used to evaluate the test set with the selected model
+   
+First round of evaluation stored in file data/processed/test_set_evaluation_v1.csv
 
 Project Organization
 ------------
@@ -27,8 +29,6 @@ Project Organization
     ├── Makefile           <- Makefile with commands like `make data` or `make train`
     ├── README.md          <- The top-level README for developers using this project.
     ├── data
-    │   ├── external       <- Data from third party sources.
-    │   ├── interim        <- Intermediate data that has been transformed.
     │   ├── processed      <- The final, canonical data sets for modeling.
     │   └── raw            <- The original, immutable data dump.
     │
